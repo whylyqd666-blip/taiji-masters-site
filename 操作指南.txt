@@ -1,0 +1,69 @@
+# 太极拳发源地 · 拳师独立网站系统
+
+## 项目位置
+桌面 → taiji-masters 文件夹
+
+## 结构说明
+```
+taiji-masters/
+├── index.html                  # 拳师名录首页
+├── shifu-libingjiang.html      # 李炳江个人页（样板）
+├── css/
+│   └── style.css               # 统一样式（水墨风）
+└── 操作指南.txt                # 就是这个文件
+```
+
+## 给新拳师加页面（5分钟搞定）
+
+### 第一步：复制模板
+1. 复制 `shifu-libingjiang.html` 这个文件
+2. 重命名为 `shifu-张三.html`（拼音或英文都行）
+
+### 第二步：改内容
+用记事本打开新文件，找到这几处改掉：
+- `李炳江` → 改成拳师名字
+- `太极拳教练` → 改成拳师的称号
+- `@李炳江太极` → 改成拳师的抖音号
+- 简介文字 → 改成拳师的介绍
+- 背书内容 → 改成拳师的成就
+
+### 第三步：加进首页
+打开 `index.html`，找到拳师列表那一块，复制 `master-card` 那一整块，改名字和链接即可。
+
+## 部署上线（让全网能看到）
+
+### 免费方案（推荐）：GitHub Pages
+1. 去 github.com 注册账号
+2. 点 New Repository → 名字填 `taiji-masters`
+3. 把 `taiji-masters` 文件夹里的文件上传
+4. 进 Settings → Pages → 选 main 分支
+5. 等2分钟，就能通过 `你的用户名.github.io/taiji-masters` 访问
+
+### 进阶方案：自己买域名
+如果想用自己域名（比如 taiji-masters.com）：
+- 阿里云或腾讯云买域名，一年30-60块
+- Cloudflare Pages 托管，免费
+- 我来帮你配
+
+## 替换照片和视频
+
+### 照片
+把 `gallery-placeholder` 那一整块替换成：
+```html
+<img src="照片文件名.jpg" alt="练拳照" style="width:100%;height:100%;object-fit:cover;">
+```
+
+### 视频
+把 `video-placeholder` 那一整块替换成：
+```html
+<video controls style="width:100%;height:100%;object-fit:cover;">
+  <source src="视频文件名.mp4" type="video/mp4">
+</video>
+```
+
+照片和视频文件放在 `taiji-masters/` 文件夹里就行。
+
+## 注意事项
+- 所有文件名不要用中文（用拼音或英文），否则浏览器可能显示不了
+- 照片建议先用工具压小一点（1MB以内），打开速度快
+- 有问题直接问我

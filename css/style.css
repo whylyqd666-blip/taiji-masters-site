@@ -1,0 +1,609 @@
+/* ==========================================
+   太极拳发源地 · 水墨风格主题
+   ========================================== */
+
+/* --- 字体引入 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+/* --- 基础重置 --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f2ed;
+    color: #2c2c2c;
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+/* --- 配色变量 --- */
+:root {
+    --ink: #1a1a1a;
+    --ink-light: #4a4a4a;
+    --ink-dim: #888;
+    --paper: #f5f2ed;
+    --paper-light: #faf8f4;
+    --paper-dark: #e8e4dd;
+    --accent: #c43a3a;
+    --accent-light: #d45555;
+    --gold: #b8860b;
+    --border: #d5cfc6;
+    --shadow: rgba(0, 0, 0, 0.06);
+}
+
+/* --- 导航 --- */
+.navbar {
+    background: var(--ink);
+    color: #f5f2ed;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--accent);
+}
+
+.nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links a {
+    color: rgba(245, 242, 237, 0.7);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #f5f2ed;
+    background: rgba(245, 242, 237, 0.1);
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--accent);
+}
+
+/* --- 主横幅（首页） --- */
+.hero {
+    position: relative;
+    padding: 120px 24px 100px;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    color: #f5f2ed;
+}
+
+.hero::before {
+    content: '☯';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 300px;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: var(--accent-light);
+    border: 1px solid var(--accent);
+    padding: 4px 20px;
+    border-radius: 20px;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: rgba(245, 242, 237, 0.6);
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.hero-sep {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin: 32px auto 0;
+}
+
+/* --- 拳师列表（首页） --- */
+.masters-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+}
+
+.masters-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 48px;
+    letter-spacing: 4px;
+    position: relative;
+}
+
+.masters-section h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 12px auto 0;
+}
+
+.masters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.master-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    display: block;
+}
+
+.master-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--shadow);
+    border-color: var(--accent);
+}
+
+.card-photo {
+    height: 200px;
+    background: var(--paper-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-photo-placeholder {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    color: var(--ink-dim);
+    opacity: 0.3;
+}
+
+.card-empty .card-photo-placeholder {
+    font-size: 36px;
+}
+
+.card-info {
+    padding: 24px;
+}
+
+.card-info h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+.card-info p {
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+/* --- 个人页面头部 --- */
+.profile-header {
+    position: relative;
+    padding: 80px 24px 60px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    color: #f5f2ed;
+}
+
+.profile-header::before {
+    content: '☯';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+.profile-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+}
+
+.avatar-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--paper-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    color: var(--ink);
+    border: 3px solid var(--accent);
+    letter-spacing: 2px;
+}
+
+.profile-meta h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+}
+
+.profile-title {
+    font-size: 15px;
+    color: var(--accent-light);
+    letter-spacing: 3px;
+}
+
+.profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tag {
+    font-size: 12px;
+    padding: 3px 12px;
+    border: 1px solid rgba(245, 242, 237, 0.3);
+    border-radius: 20px;
+    color: rgba(245, 242, 237, 0.8);
+    letter-spacing: 1px;
+}
+
+.profile-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.contact-item {
+    font-size: 13px;
+    color: rgba(245, 242, 237, 0.6);
+    letter-spacing: 1px;
+}
+
+/* --- 通用段落 --- */
+.section {
+    padding: 64px 24px;
+}
+
+.section-gray {
+    background: var(--paper-dark);
+}
+
+.section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-deco {
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* --- 内容卡片 --- */
+.content-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    line-height: 2;
+}
+
+.content-card p {
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: var(--ink-light);
+}
+
+.content-card p:last-child {
+    margin-bottom: 0;
+}
+
+.content-card strong {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* --- 背书网格 --- */
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.credit-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.credit-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.credit-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.credit-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.credit-card p {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.6;
+}
+
+/* --- 照片墙 --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--paper-dark);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--ink-dim);
+    letter-spacing: 2px;
+    transition: all 0.2s;
+}
+
+.gallery-placeholder:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- 视频区域 --- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    aspect-ratio: 9/16;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #2d2d2d;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: rgba(245, 242, 237, 0.5);
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.video-placeholder:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+}
+
+/* --- 联系方式 --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.contact-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-label {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-dim);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.contact-value {
+    display: block;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+/* --- 底部 --- */
+.footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--ink-dim);
+    letter-spacing: 2px;
+}
+
+/* --- 动画 --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* --- 响应式 --- */
+@media (max-width: 768px) {
+    .profile-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-tags,
+    .profile-contacts {
+        justify-content: center;
+    }
+
+    .section-title {
+        justify-content: center;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 24px;
+        gap: 8px;
+    }
+
+    .hero {
+        padding: 80px 24px 60px;
+    }
+
+    .masters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .credits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 22px;
+    }
+}
