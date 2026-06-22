@@ -1,5 +1,6 @@
 /* ==========================================
-   太极拳发源地 · 水墨风格主题
+   太极拳发源地 · 水墨武馆风格 v2.0
+   精装修版
    ========================================== */
 
 /* --- 字体引入 --- */
@@ -24,6 +25,8 @@ body {
     min-height: 100vh;
 }
 
+a { color: inherit; text-decoration: none; }
+
 /* --- 配色变量 --- */
 :root {
     --ink: #1a1a1a;
@@ -32,14 +35,17 @@ body {
     --paper: #f5f2ed;
     --paper-light: #faf8f4;
     --paper-dark: #e8e4dd;
-    --accent: #c43a3a;
+    --accent: #b8382d;
     --accent-light: #d45555;
-    --gold: #b8860b;
+    --gold: #c9a227;
+    --gold-light: #e6c65a;
+    --jade: #3a7d5c;
     --border: #d5cfc6;
     --shadow: rgba(0, 0, 0, 0.06);
+    --shadow-deep: rgba(0, 0, 0, 0.12);
 }
 
-/* --- 导航 --- */
+/* ========== 导航栏 ========== */
 .navbar {
     background: var(--ink);
     color: #f5f2ed;
@@ -47,13 +53,14 @@ body {
     top: 0;
     z-index: 100;
     border-bottom: 2px solid var(--accent);
+    backdrop-filter: blur(10px);
 }
 
 .nav-inner {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
-    height: 60px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,42 +68,68 @@ body {
 
 .nav-logo {
     font-family: 'Noto Serif SC', serif;
-    font-weight: 700;
-    font-size: 18px;
-    letter-spacing: 4px;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-logo::before {
+    content: '☯';
+    font-size: 22px;
+    color: var(--accent);
 }
 
 .nav-links {
     display: flex;
-    gap: 8px;
+    gap: 4px;
 }
 
 .nav-links a {
     color: rgba(245, 242, 237, 0.7);
     text-decoration: none;
-    padding: 6px 16px;
+    padding: 8px 18px;
     border-radius: 4px;
     font-size: 14px;
-    transition: all 0.2s;
+    transition: all 0.25s;
+    letter-spacing: 1px;
+    position: relative;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
     color: #f5f2ed;
-    background: rgba(245, 242, 237, 0.1);
+    background: rgba(245, 242, 237, 0.08);
 }
 
 .nav-links a.active {
-    border-bottom: 2px solid var(--accent);
+    color: var(--gold-light);
+    background: rgba(201, 162, 39, 0.1);
 }
 
-/* --- 主横幅（首页） --- */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+}
+
+/* ========== Hero 横幅（首页） ========== */
 .hero {
     position: relative;
-    padding: 120px 24px 100px;
+    padding: 140px 24px 120px;
     text-align: center;
     overflow: hidden;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(184, 56, 45, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
+        linear-gradient(160deg, #1a1a1a 0%, #2a2522 40%, #1a1a1a 100%);
     color: #f5f2ed;
 }
 
@@ -106,46 +139,168 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 300px;
-    opacity: 0.04;
+    font-size: 400px;
+    opacity: 0.03;
     pointer-events: none;
+    animation: taijiSpin 120s linear infinite;
+}
+
+@keyframes taijiSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .hero-badge {
     display: inline-block;
     font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: var(--accent-light);
-    border: 1px solid var(--accent);
-    padding: 4px 20px;
-    border-radius: 20px;
-    letter-spacing: 4px;
-    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--gold-light);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    padding: 6px 24px;
+    border-radius: 30px;
+    letter-spacing: 6px;
+    margin-bottom: 28px;
+    background: rgba(201, 162, 39, 0.06);
 }
 
 .hero h1 {
     font-family: 'Noto Serif SC', serif;
     font-weight: 900;
-    font-size: clamp(36px, 6vw, 56px);
-    letter-spacing: 8px;
-    margin-bottom: 16px;
+    font-size: clamp(42px, 7vw, 64px);
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .hero-subtitle {
-    font-size: 16px;
-    color: rgba(245, 242, 237, 0.6);
-    letter-spacing: 3px;
+    font-size: 17px;
+    color: rgba(245, 242, 237, 0.55);
+    letter-spacing: 4px;
     font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .hero-sep {
-    width: 60px;
+    width: 80px;
     height: 2px;
-    background: var(--accent);
-    margin: 32px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 36px auto 0;
 }
 
-/* --- 拳师列表（首页） --- */
+.hero-cta {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 40px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 15px;
+    letter-spacing: 3px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-cta:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 56, 45, 0.3);
+}
+
+/* ========== 数据统计条 ========== */
+.stats-bar {
+    max-width: 900px;
+    margin: -48px auto 0;
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 0 24px;
+}
+
+.stat-item {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px var(--shadow-deep);
+}
+
+.stat-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin-top: 4px;
+    letter-spacing: 2px;
+}
+
+/* ========== 区块通用 ========== */
+.section {
+    padding: 80px 24px;
+}
+
+.section-gray {
+    background: var(--paper-dark);
+}
+
+.section-dark {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    letter-spacing: 5px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: var(--ink-dim);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.section-dark .section-subtitle {
+    color: rgba(245, 242, 237, 0.5);
+}
+
+.title-deco {
+    display: inline-block;
+    width: 4px;
+    height: 26px;
+    background: linear-gradient(180deg, var(--accent), var(--gold));
+    border-radius: 2px;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+    margin-left: 16px;
+}
+
+/* ========== 拳师列表（首页） ========== */
 .masters-section {
     max-width: 1100px;
     margin: 0 auto;
@@ -154,93 +309,189 @@ body {
 
 .masters-section h2 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 28px;
+    font-size: 26px;
     text-align: center;
-    margin-bottom: 48px;
-    letter-spacing: 4px;
-    position: relative;
+    margin-bottom: 12px;
+    letter-spacing: 5px;
 }
 
-.masters-section h2::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
-    margin: 12px auto 0;
+.masters-section > p {
+    text-align: center;
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin-bottom: 48px;
+    letter-spacing: 1px;
 }
 
 .masters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
 }
 
 .master-card {
     background: var(--paper-light);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s;
+    transition: all 0.35s cubic-bezier(.25,.46,.45,.94);
     display: block;
+    position: relative;
 }
 
 .master-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px var(--shadow);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px var(--shadow-deep);
     border-color: var(--accent);
 }
 
+.master-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.master-card:hover::after {
+    opacity: 1;
+}
+
 .card-photo {
-    height: 200px;
-    background: var(--paper-dark);
+    height: 220px;
+    background: linear-gradient(135deg, #2a2522, #3a3530);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card-photo-placeholder {
     font-family: 'Noto Serif SC', serif;
-    font-size: 48px;
-    color: var(--ink-dim);
-    opacity: 0.3;
-}
-
-.card-empty .card-photo-placeholder {
-    font-size: 36px;
+    font-size: 56px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 2px;
 }
 
 .card-info {
-    padding: 24px;
+    padding: 24px 28px;
 }
 
 .card-info h3 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 4px;
+    letter-spacing: 2px;
 }
 
 .card-title {
     font-size: 13px;
     color: var(--accent);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    font-weight: 500;
 }
 
 .card-info p {
     font-size: 14px;
     color: var(--ink-light);
     margin-top: 12px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-/* --- 个人页面头部 --- */
+/* ========== 课程卡片（首页/课程页） ========== */
+.courses-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.course-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--shadow-deep);
+    border-color: var(--gold);
+}
+
+.course-icon {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+.course-icon.chen { background: linear-gradient(135deg, #b8382d33, #b8382d11); }
+.course-icon.kids { background: linear-gradient(135deg, #c9a22733, #c9a22711); }
+.course-icon.health { background: linear-gradient(135deg, #3a7d5c33, #3a7d5c11); }
+.course-icon.private { background: linear-gradient(135deg, #4a4a8833, #4a4a8811); }
+
+.course-body {
+    padding: 20px 24px;
+}
+
+.course-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.course-body p {
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.course-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--ink-dim);
+}
+
+.course-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ========== 个人页面头部 ========== */
 .profile-header {
     position: relative;
-    padding: 80px 24px 60px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    padding: 100px 24px 70px;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(184, 56, 45, 0.1) 0%, transparent 60%),
+        linear-gradient(160deg, #1a1a1a 0%, #2a2522 50%, #1a1a1a 100%);
     color: #f5f2ed;
+    overflow: hidden;
 }
 
 .profile-header::before {
@@ -249,17 +500,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 200px;
-    opacity: 0.04;
+    font-size: 250px;
+    opacity: 0.03;
     pointer-events: none;
 }
 
 .profile-inner {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 44px;
     position: relative;
 }
 
@@ -267,106 +518,82 @@ body {
     flex-shrink: 0;
 }
 
-.avatar-placeholder {
-    width: 140px;
-    height: 140px;
+.avatar-placeholder,
+.avatar-img {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background: var(--paper-dark);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Noto Serif SC', serif;
-    font-size: 28px;
+    font-size: 32px;
     color: var(--ink);
-    border: 3px solid var(--accent);
+    border: 3px solid var(--gold);
     letter-spacing: 2px;
+    object-fit: cover;
+    background: var(--paper-dark);
+}
+
+.avatar-img {
+    border-color: var(--gold);
 }
 
 .profile-meta h1 {
     font-family: 'Noto Serif SC', serif;
-    font-size: clamp(28px, 4vw, 40px);
-    letter-spacing: 6px;
+    font-size: clamp(30px, 4vw, 42px);
+    letter-spacing: 8px;
     margin-bottom: 8px;
 }
 
 .profile-title {
-    font-size: 15px;
-    color: var(--accent-light);
-    letter-spacing: 3px;
+    font-size: 16px;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    font-weight: 400;
 }
 
 .profile-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 18px;
 }
 
 .tag {
     font-size: 12px;
-    padding: 3px 12px;
-    border: 1px solid rgba(245, 242, 237, 0.3);
+    padding: 4px 14px;
+    border: 1px solid rgba(245, 242, 237, 0.25);
     border-radius: 20px;
-    color: rgba(245, 242, 237, 0.8);
+    color: rgba(245, 242, 237, 0.85);
     letter-spacing: 1px;
+    backdrop-filter: blur(4px);
 }
 
 .profile-contacts {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 16px;
+    margin-top: 18px;
 }
 
 .contact-item {
     font-size: 13px;
-    color: rgba(245, 242, 237, 0.6);
+    color: rgba(245, 242, 237, 0.55);
     letter-spacing: 1px;
 }
 
-/* --- 通用段落 --- */
-.section {
-    padding: 64px 24px;
-}
-
-.section-gray {
-    background: var(--paper-dark);
-}
-
-.section-inner {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 24px;
-    letter-spacing: 4px;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.title-deco {
-    display: inline-block;
-    width: 4px;
-    height: 24px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-/* --- 内容卡片 --- */
+/* ========== 内容卡片 ========== */
 .content-card {
     background: var(--paper-light);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 32px;
-    line-height: 2;
+    border-radius: 10px;
+    padding: 36px 40px;
+    line-height: 2.1;
 }
 
 .content-card p {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 15px;
     color: var(--ink-light);
 }
@@ -377,48 +604,86 @@ body {
 
 .content-card strong {
     color: var(--accent);
-    font-weight: 500;
+    font-weight: 600;
 }
 
-/* --- 背书网格 --- */
+.bio-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.bio-card::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 72px;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    opacity: 0.08;
+    line-height: 1;
+}
+
+/* ========== 背书网格 ========== */
 .credits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
 }
 
 .credit-card {
     background: var(--paper-light);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 28px 24px;
     text-align: center;
-    transition: all 0.2s;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.credit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .credit-card:hover {
     border-color: var(--accent);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+.credit-card:hover::before {
+    opacity: 1;
 }
 
 .credit-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-size: 36px;
+    margin-bottom: 14px;
+    display: block;
 }
 
 .credit-card h3 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .credit-card p {
     font-size: 13px;
-    color: var(--ink-light);
-    line-height: 1.6;
+    color: var(--ink-dim);
+    line-height: 1.7;
 }
 
-/* --- 照片墙 --- */
+/* ========== 照片墙 ========== */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -427,22 +692,32 @@ body {
 
 .gallery-item {
     aspect-ratio: 4/3;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 .gallery-placeholder {
     width: 100%;
     height: 100%;
-    background: var(--paper-dark);
+    background: linear-gradient(135deg, var(--paper-dark), #ddd8cf);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--ink-dim);
     letter-spacing: 2px;
-    transition: all 0.2s;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.gallery-placeholder::after {
+    content: '+';
+    position: absolute;
+    font-size: 32px;
+    color: var(--border);
+    opacity: 0.5;
 }
 
 .gallery-placeholder:hover {
@@ -450,32 +725,55 @@ body {
     color: var(--accent);
 }
 
-/* --- 视频区域 --- */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ========== 视频区域 ========== */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
 }
 
 .video-card {
     aspect-ratio: 9/16;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
+    position: relative;
+    background: #1a1a1a;
 }
 
 .video-placeholder {
     width: 100%;
     height: 100%;
-    background: #2d2d2d;
+    background: linear-gradient(180deg, #2a2522, #1a1a1a);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
-    color: rgba(245, 242, 237, 0.5);
+    color: rgba(245, 242, 237, 0.4);
     letter-spacing: 1px;
-    transition: all 0.2s;
+    transition: all 0.3s;
     cursor: pointer;
+    position: relative;
+}
+
+.video-placeholder::before {
+    content: '▶';
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: var(--accent);
+    opacity: 0.6;
 }
 
 .video-placeholder:hover {
@@ -483,7 +781,68 @@ body {
     color: var(--accent-light);
 }
 
-/* --- 联系方式 --- */
+.video-placeholder:hover::before {
+    opacity: 1;
+}
+
+/* ========== 学员风采 ========== */
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.student-card {
+    background: var(--paper-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.student-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px var(--shadow);
+}
+
+.student-photo {
+    height: 200px;
+    background: linear-gradient(135deg, #e8e4dd, #d5cfc6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: var(--ink-dim);
+    opacity: 0.3;
+}
+
+.student-info {
+    padding: 18px 22px;
+}
+
+.student-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.student-desc {
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+}
+
+.student-quote {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--accent);
+    font-style: italic;
+    padding-left: 12px;
+    border-left: 2px solid var(--accent);
+}
+
+/* ========== 联系方式 ========== */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -493,17 +852,24 @@ body {
 .contact-card {
     background: var(--paper-light);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 24px 20px;
     text-align: center;
+    transition: all 0.3s;
+}
+
+.contact-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
 }
 
 .contact-label {
     display: block;
     font-size: 12px;
     color: var(--ink-dim);
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .contact-value {
@@ -511,36 +877,176 @@ body {
     font-family: 'Noto Serif SC', serif;
     font-size: 16px;
     color: var(--ink);
+    font-weight: 500;
 }
 
-/* --- 底部 --- */
+/* ========== 页脚 ========== */
 .footer {
     text-align: center;
-    padding: 32px 24px;
+    padding: 40px 24px;
     border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--ink-dim);
     letter-spacing: 2px;
+    background: var(--paper-light);
 }
 
-/* --- 动画 --- */
+.footer a {
+    color: var(--accent);
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: var(--gold);
+}
+
+/* ========== CTA 行动召唤 ========== */
+.cta-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, #2a2522 100%);
+    color: var(--paper);
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '☯';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 300px;
+    opacity: 0.02;
+}
+
+.cta-banner h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.cta-banner p {
+    font-size: 15px;
+    color: rgba(245, 242, 237, 0.5);
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 14px 44px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 15px;
+    letter-spacing: 3px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.cta-btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 56, 45, 0.3);
+}
+
+/* ========== 时间线（荣誉） ========== */
+.timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--gold), var(--jade));
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--paper);
+}
+
+.timeline-date {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.timeline-text {
+    font-size: 15px;
+    color: var(--ink-light);
+    line-height: 1.7;
+}
+
+/* ========== 动画 ========== */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .section {
-    animation: fadeInUp 0.6s ease-out;
+    animation: fadeInUp 0.6s ease-out both;
 }
 
-/* --- 响应式 --- */
+/* 延迟动画 */
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.2s; }
+
+/* ========== 响应式 ========== */
 @media (max-width: 768px) {
+    .nav-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 24px;
+        gap: 8px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 100px 20px 80px;
+    }
+
+    .hero h1 { letter-spacing: 6px; }
+
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -32px;
+    }
+
     .profile-inner {
         flex-direction: column;
         align-items: center;
@@ -554,20 +1060,12 @@ body {
 
     .section-title {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
-    .nav-inner {
-        flex-direction: column;
-        height: auto;
-        padding: 12px 24px;
-        gap: 8px;
-    }
-
-    .hero {
-        padding: 80px 24px 60px;
-    }
-
-    .masters-grid {
+    .masters-grid,
+    .courses-grid,
+    .students-grid {
         grid-template-columns: 1fr;
     }
 
@@ -581,29 +1079,29 @@ body {
 
     .credits-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .credits-grid {
-        grid-template-columns: 1fr;
-    }
-
+    .gallery,
+    .video-grid,
+    .credits-grid,
     .contact-grid {
         grid-template-columns: 1fr;
     }
 
-    .avatar-placeholder {
-        width: 100px;
-        height: 100px;
-        font-size: 22px;
+    .avatar-placeholder,
+    .avatar-img {
+        width: 110px;
+        height: 110px;
+        font-size: 24px;
     }
+
+    .stat-number { font-size: 24px; }
+
+    .hero-badge { font-size: 11px; letter-spacing: 3px; }
 }

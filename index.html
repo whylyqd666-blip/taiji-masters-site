@@ -3,61 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="太极拳发源地 · 拳师名录 — 传承太极文化，以拳入道，每日习拳，传播国粹">
     <title>太极拳发源地 · 拳师名录</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-inner">
             <div class="nav-logo">太极拳发源地</div>
             <div class="nav-links">
-                <a href="index.html" class="active">拳师名录</a>
-                <a href="shifu-libingjiang.html">李炳江</a>
+                <a href="index.html" class="active">首页</a>
+                <a href="courses.html">课程</a>
+                <a href="shifu-libingjiang.html">拳师</a>
+                <a href="#contact">联系</a>
             </div>
         </div>
     </nav>
 
     <!-- 主横幅 -->
     <header class="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-badge">太极 · 传承</div>
+            <div class="hero-badge">太极 · 传承 · 潮流</div>
             <h1>太极拳发源地</h1>
             <p class="hero-subtitle">一方水土养一方拳 · 一方拳师传一方道</p>
             <div class="hero-sep"></div>
+            <a href="courses.html" class="hero-cta">了解课程</a>
         </div>
     </header>
 
-    <!-- 拳师列表 -->
-    <section class="masters-section">
+    <!-- 数据统计 -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">连续习拳天数</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">精品课程</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">终身陪伴</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">入门门槛</div>
+        </div>
+    </div>
+
+    <!-- 课程预览 -->
+    <section class="section courses-section">
+        <h2 class="section-title"><span class="title-deco"></span>精品课程</h2>
+        <p class="section-subtitle">从零基础到进阶，总有一款适合你</p>
+        <div class="courses-grid">
+            <a href="courses.html#chen" class="course-card">
+                <div class="course-icon chen">🥋</div>
+                <div class="course-body">
+                    <h3>陈氏太极拳</h3>
+                    <p>传统陈氏太极老架一路，从基本功到完整套路，系统学习正宗太极。</p>
+                    <div class="course-meta">
+                        <span>📅 每日</span>
+                        <span>⏰ 60分钟</span>
+                    </div>
+                </div>
+            </a>
+            <a href="courses.html#kids" class="course-card">
+                <div class="course-icon kids">👶</div>
+                <div class="course-body">
+                    <h3>少儿武术启蒙</h3>
+                    <p>趣味武术训练，培养孩子专注力、协调性与自信心，寓教于乐。</p>
+                    <div class="course-meta">
+                        <span>📅 周末</span>
+                        <span>⏰ 45分钟</span>
+                    </div>
+                </div>
+            </a>
+            <a href="courses.html#health" class="course-card">
+                <div class="course-icon health">🧘</div>
+                <div class="course-body">
+                    <h3>养生太极</h3>
+                    <p>针对上班族与中老年群体，舒缓身心，改善亚健康状态。</p>
+                    <div class="course-meta">
+                        <span>📅 每周三次</span>
+                        <span>⏰ 50分钟</span>
+                    </div>
+                </div>
+            </a>
+            <a href="courses.html#private" class="course-card">
+                <div class="course-icon private">🎯</div>
+                <div class="course-body">
+                    <h3>一对一私教</h3>
+                    <p>个性化定制教学方案，针对性纠正动作，快速提升水平。</p>
+                    <div class="course-meta">
+                        <span>📅 预约制</span>
+                        <span>⏰ 90分钟</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 拳师介绍 -->
+    <section class="masters-section section-gray">
         <h2>本埠拳师</h2>
+        <p>每一位拳师都是用汗水浇灌出来的传承者</p>
         <div class="masters-grid">
             <a href="shifu-libingjiang.html" class="master-card">
                 <div class="card-photo">
+                    <!-- 替换为真实照片: <img src="images/shifu-avatar.jpg" alt="李炳江"> -->
                     <div class="card-photo-placeholder">李</div>
                 </div>
                 <div class="card-info">
                     <h3>李炳江</h3>
                     <span class="card-title">太极拳教练</span>
-                    <p>每日习拳，以拳入道。坚持日更短视频，传播太极文化。</p>
+                    <p>每日习拳，以拳入道。坚持日更短视频，传播太极文化。不搞玄的，就是用拳说话。</p>
                 </div>
             </a>
-            <div class="master-card card-empty">
+            <div class="master-card card-empty" style="opacity: 0.6;">
                 <div class="card-photo">
                     <div class="card-photo-placeholder">?</div>
                 </div>
                 <div class="card-info">
                     <h3>待入驻</h3>
                     <span class="card-title">——</span>
-                    <p>期待下一位拳师...</p>
+                    <p>期待下一位志同道合的拳师加入...</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 学员风采 -->
+    <section class="section">
+        <div class="section-inner">
+            <h2 class="section-title"><span class="title-deco"></span>学员风采</h2>
+            <p class="section-subtitle">他们在这里找到了属于自己的节奏</p>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-photo">🧑</div>
+                    <div class="student-info">
+                        <div class="student-name">学员 A</div>
+                        <div class="student-desc">练习时长：30天</div>
+                        <div class="student-quote">"每天跟着练，腰不酸了，精神也好了"</div>
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-photo">👩</div>
+                    <div class="student-info">
+                        <div class="student-name">学员 B</div>
+                        <div class="student-desc">练习时长：20天</div>
+                        <div class="student-quote">"教练讲得清楚，小白也能跟上"</div>
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="student-photo">👦</div>
+                    <div class="student-info">
+                        <div class="student-name">小学员 C</div>
+                        <div class="student-desc">少儿班成员</div>
+                        <div class="student-quote">"练武好酷！我要像教练一样厉害"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="cta-banner" id="contact">
+        <h2>开始你的太极之旅</h2>
+        <p>无需基础 · 随时加入 · 终身陪伴</p>
+        <a href="shifu-libingjiang.html#contact" class="cta-btn">联系教练</a>
+    </section>
+
+    <!-- 页脚 -->
     <footer class="footer">
         <p>太极拳发源地 · 拳师独立展示平台</p>
+        <p style="margin-top: 8px; font-size: 12px; opacity: 0.6;">Powered by GitHub Pages · Made with ☯</p>
     </footer>
+
 </body>
 </html>
